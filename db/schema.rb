@@ -10,13 +10,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_04_30_165630) do
+ActiveRecord::Schema.define(version: 2019_05_25_092545) do
 
   create_table "taggings", force: :cascade do |t|
     t.integer "tag_id"
     t.integer "task_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["tag_id", "task_id"], name: "index_taggings_on_tag_id_and_task_id", unique: true
     t.index ["tag_id"], name: "index_taggings_on_tag_id"
     t.index ["task_id"], name: "index_taggings_on_task_id"
   end
@@ -25,6 +26,7 @@ ActiveRecord::Schema.define(version: 2019_04_30_165630) do
     t.string "title"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["title"], name: "index_tags_on_title"
   end
 
   create_table "tasks", force: :cascade do |t|
@@ -32,6 +34,7 @@ ActiveRecord::Schema.define(version: 2019_04_30_165630) do
     t.boolean "done", default: false, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["title"], name: "index_tasks_on_title"
   end
 
 end
