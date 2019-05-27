@@ -31,7 +31,6 @@ RSpec.describe 'Tasks API', type: :request do
     end
 
     it 'returns tasks with tags' do
-      # puts json
       expect(json).not_to be_empty
       expect(json['data'].size).to eq(10)
       expect(json['data'][0]['relationships']['tags']['data'][0]['id'].to_i).to eq(task_id)
